@@ -17,7 +17,9 @@ mongoose.set("strictQuery", true);
 
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO);
+    await mongoose.connect(
+      "mongodb+srv://sylvester:sylvester@neural-feed.kjiocqi.mongodb.net/"
+    );
     console.log("Connected to mongoDB!");
   } catch (error) {
     console.log(error);
