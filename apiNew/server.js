@@ -27,7 +27,7 @@ const connect = async () => {
 };
 
 app.use(
-  cors({ origin: "https://https://job20.netlify.app", credentials: true })
+  cors({ origin: "https://job20.onrender.com", credentials: true })
 );
 // app.use((req, res, next) => {
 //   res.header("Access-Control-Allow-Origin", "https://job-brown.vercel.app");
