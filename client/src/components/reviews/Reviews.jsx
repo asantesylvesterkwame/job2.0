@@ -7,7 +7,7 @@ const Reviews = ({ gigId }) => {
 
   const queryClient = useQueryClient()
   const { isLoading, error, data } = useQuery({
-    queryKey: [Review.userId],
+    queryKey: ["reviews"],
     queryFn: () =>
       newRequest.get(`/reviews/${gigId}`).then((res) => {
         return res.data;

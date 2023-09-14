@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./MyGigs.scss";
 import getCurrentUser from "../../utils/getCurrentUser";
@@ -6,6 +6,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 
 function MyGigs() {
+  const [jobs, setJobs] = useState(null);
   const currentUser = getCurrentUser();
 
   const queryClient = useQueryClient();
@@ -13,9 +14,14 @@ function MyGigs() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["myGigs"],
     queryFn: () =>
-      newRequest.get(`/gigs?userId=${currentUser.id}`).then((res) => {
-        return res.data;
-      }),
+      newRequest
+        .get(`/gigs?userId=${currentUser.id}`)
+        .then((res) => {
+          return res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        }),
   });
 
   const mutation = useMutation({
@@ -31,6 +37,19 @@ function MyGigs() {
     mutation.mutate(id);
   };
 
+  const getJobs = async () => {
+    try {
+      const res = await newRequest.get("/gigs");
+      setJobs(res.data);
+    } catch (err) {
+    console.log(err);
+    }
+    
+  };
+  useEffect(() => {
+    getJobs();
+  }, []);
+
   return (
     <div className="myGigs">
       {isLoading ? (
@@ -41,7 +60,7 @@ function MyGigs() {
         <div className="container">
           <div className="title">
             <h1>Gigs</h1>
-            {currentUser.isSeller && ( 
+            {currentUser.isSeller && (
               <Link to="/add">
                 <button>Add New Gig</button>
               </Link>
@@ -55,7 +74,7 @@ function MyGigs() {
               <th>Sales</th>
               <th>Action</th>
             </tr>
-            {data.map((gig) => (
+            {jobs.map((gig) => (
               <tr key={gig._id}>
                 <td>
                   <img className="image" src={gig.cover} alt="" />

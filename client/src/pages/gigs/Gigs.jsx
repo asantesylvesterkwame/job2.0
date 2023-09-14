@@ -5,18 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useLocation } from "react-router-dom";
 
-
 function Gigs() {
   const [sort, setSort] = useState("sales");
   const [open, setOpen] = useState(false);
   const minRef = useRef();
   const maxRef = useRef();
-
-
+ 
 
   const { search } = useLocation();
-
- 
 
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["gigs"],
@@ -29,15 +25,6 @@ function Gigs() {
           return res.data;
         }),
   });
-
-  // const { isLoading, error, data } = useQuery({
-  //   queryKey: ['repoData'],
-  //   queryFn: () =>
-  //     newRequest.get("/gigs").then(res=>{
-  //       return res.data;
-  //     }),
-  // })
-
 
   console.log(data);
 
@@ -57,7 +44,7 @@ function Gigs() {
   return (
     <div className="gigs">
       <div className="container">
-        <span className="breadcrumbs">Jobs Available </span>
+        <span className="breadcrumbs">Liverr {">"} Graphics & Design {">"} </span>
         <h1>AI Artists</h1>
         <p>
           Explore the boundaries of art and technology with Liverr's AI artists
@@ -96,7 +83,7 @@ function Gigs() {
         </div>
       </div>
     </div>
-  );  
+  );
 }
 
 export default Gigs;

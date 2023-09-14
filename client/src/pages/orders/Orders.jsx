@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Orders.scss";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 
 const Orders = () => {
+  const [orders, setOrders] = useState([]);
+
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const navigate = useNavigate();
@@ -33,6 +35,18 @@ const Orders = () => {
       }
     }
   };
+
+    const getOrders = async () => {
+      try {
+        const res = await newRequest.get("/orders");
+        setOrders(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    useEffect(() => {
+      getOrders();
+    }, []);
   return (
     <div className="orders">
       {isLoading ? (
@@ -51,8 +65,7 @@ const Orders = () => {
               <th>Price</th>
               <th>Contact</th>
             </tr>
-            {data.map((order) => (
-              <tbody>
+            {orders.map((order) => (
               <tr key={order._id}>
                 <td>
                   <img className="image" src={order.img} alt="" />
@@ -68,9 +81,7 @@ const Orders = () => {
                   />
                 </td>
               </tr>
-              </tbody>
             ))}
-            
           </table>
         </div>
       )}

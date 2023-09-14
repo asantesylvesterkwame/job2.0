@@ -7,12 +7,6 @@ import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 
 const Add = () => {
-
-  
-  const navigate = useNavigate();
-
-  const queryClient = useQueryClient();
-
   const [singleFile, setSingleFile] = useState(undefined);
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
@@ -52,8 +46,9 @@ const Add = () => {
     }
   };
 
-  console.log(files);
+  const navigate = useNavigate();
 
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (gig) => {
@@ -67,8 +62,7 @@ const Add = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     mutation.mutate(state);
-    navigate("/mygigs")
-    // console.log();
+    // navigate("/mygigs")
   };
 
   return (
@@ -86,10 +80,10 @@ const Add = () => {
             />
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
-              <option value="design">HealthCare</option>
-              <option value="web">Home Renovations</option>
-              <option value="animation">Transport</option>
-              <option value="music">Education</option>
+              <option value="design">Design</option>
+              <option value="web">Web Development</option>
+              <option value="animation">Animation</option>
+              <option value="music">Music</option>
             </select>
             <div className="images">
               <div className="imagesInputs">

@@ -17,30 +17,16 @@ mongoose.set("strictQuery", true);
 
 const connect = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://sylvester:sylvester@neural-feed.kjiocqi.mongodb.net/"
-    );
+    await mongoose.connect(process.env.MONGO);
     console.log("Connected to mongoDB!");
   } catch (error) {
     console.log(error);
   }
 };
 
-app.use(
-  cors({ origin: "https://job20.onrender.com", credentials: true })
-);
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "https://job-brown.vercel.app");
-//   res.header("Access-Control-Allow-Credentials", true);
-//   next();
-// });
-
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
-
-app.get("/", (req, res) =>{
-  res.send("Server has been deployed")
-})
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);

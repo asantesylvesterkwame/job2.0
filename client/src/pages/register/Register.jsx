@@ -4,7 +4,6 @@ import "./Register.scss";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 
-
 function Register() {
   const [file, setFile] = useState(null);
   const [user, setUser] = useState({
@@ -16,7 +15,7 @@ function Register() {
     isSeller: false,
     desc: "",
   });
-  
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -89,7 +88,7 @@ function Register() {
           <input
             name="phone"
             type="text"
-            placeholder="+233 234 567 89"
+            placeholder="+1 234 567 89"
             onChange={handleChange}
           />
           <label htmlFor="">Description</label>

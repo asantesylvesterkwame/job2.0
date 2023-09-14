@@ -151,10 +151,10 @@ function Home() {
         <div className="container">
           <div className="item">
             <h1>
-              Job <i></i>
+              fiverr <i>business</i>
             </h1>
             <h1>
-              A business solution designed for <i>teams and individuals</i>
+              A business solution designed for <i>teams</i>
             </h1>
             <p>
               Upgrade to a curated experience packed with tools and benefits,
@@ -174,7 +174,7 @@ function Home() {
               <img src="./img/check.png" alt="" />
               Manage teamwork and boost productivity with one powerful workspace
             </div>
-            <button>Traverse Through Job</button>
+            <button>Explore Fiverr Business</button>
           </div>
           <div className="item">
             <img

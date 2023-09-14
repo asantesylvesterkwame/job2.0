@@ -16,18 +16,16 @@ import MyGigs from "./pages/myGigs/MyGigs";
 import {
   QueryClient,
   QueryClientProvider,
-  useQuery,
-} from '@tanstack/react-query';
+} from "@tanstack/react-query";
 import Pay from "./pages/pay/Pay";
 import Success from "./pages/success/Success";
 function App() {
-
   const queryClient = new QueryClient();
 
   const Layout = () => {
     return (
       <div className="app">
-      <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}>
           <Navbar />
           <Outlet />
           <Footer />

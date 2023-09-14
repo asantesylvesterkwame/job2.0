@@ -38,14 +38,14 @@ function Navbar() {
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
       <div className="container">
         <div className="logo">
-        <span className="dot">!</span>
           <Link className="link" to="/">
-            <span className="text">Job</span>
+            <span className="text">fiverr</span>
           </Link>
+          <span className="dot">.</span>
         </div>
         <div className="links">
-          <span>Job Extra</span>
-           <span>Explore</span> 
+          <span>Fiverr Business</span>
+          <span>Explore</span>
           <span>English</span>
           {!currentUser?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
@@ -57,10 +57,10 @@ function Navbar() {
                   {currentUser.isSeller && (
                     <>
                       <Link className="link" to="/mygigs">
-                        Job
+                        Gigs
                       </Link>
                       <Link className="link" to="/add">
-                        Add New Job
+                        Add New Gig
                       </Link>
                     </>
                   )}
@@ -91,19 +91,31 @@ function Navbar() {
           <hr />
           <div className="menu">
             <Link className="link menuLink" to="/">
-             Technology
+              Graphics & Design
             </Link>
             <Link className="link menuLink" to="/">
-              Healthcare
+              Video & Animation
             </Link>
             <Link className="link menuLink" to="/">
-              Education
+              Writing & Translation
             </Link>
             <Link className="link menuLink" to="/">
-              Transportation
+              AI Services
             </Link>
             <Link className="link menuLink" to="/">
-              Home Renovation
+              Digital Marketing
+            </Link>
+            <Link className="link menuLink" to="/">
+              Music & Audio
+            </Link>
+            <Link className="link menuLink" to="/">
+              Programming & Tech
+            </Link>
+            <Link className="link menuLink" to="/">
+              Business
+            </Link>
+            <Link className="link menuLink" to="/">
+              Lifestyle
             </Link>
           </div>
           <hr />

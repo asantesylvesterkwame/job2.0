@@ -9,8 +9,6 @@ import Reviews from "../../components/reviews/Reviews";
 function Gig() {
   const { id } = useParams();
 
-  
-
   const { isLoading, error, data } = useQuery({
     queryKey: ["gig"],
     queryFn: () =>
@@ -20,7 +18,7 @@ function Gig() {
   });
 
   const userId = data?.userId;
- 
+
   const {
     isLoading: isLoadingUser,
     error: errorUser,
@@ -44,7 +42,7 @@ function Gig() {
         <div className="container">
           <div className="left">
             <span className="breadcrumbs">
-              Job {">"} Home Renovations{">"}
+              Fiverr {">"} Graphics & Design {">"}
             </span>
             <h1>{data.title}</h1>
             {isLoadingUser ? (
@@ -71,11 +69,11 @@ function Gig() {
                 )}
               </div>
             )}
-            <div slidesToShow={1} arrowsScroll={1} className="slider">
+            <Slider slidesToShow={1} arrowsScroll={1} className="slider">
               {data.images.map((img) => (
                 <img key={img} src={img} alt="" />
               ))}
-            </div>
+            </Slider>
             <h2>About This Gig</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (
