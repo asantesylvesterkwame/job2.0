@@ -19,7 +19,11 @@ const Pay = () => {
     const makeRequest = async () => {
       try {
         const res = await newRequest.post(
-          `/orders/create-payment-intent/${id}`
+          `/orders/create-payment-intent/${id}`,
+          {},
+          {
+            withCredentials: true,
+          }
         );
         setClientSecret(res.data.clientSecret);
       } catch (err) {
@@ -30,20 +34,22 @@ const Pay = () => {
   }, []);
 
   const appearance = {
-    theme: 'stripe',
+    theme: "stripe",
   };
   const options = {
     clientSecret,
     appearance,
   };
 
-  return <div className="pay">
-    {clientSecret && (
+  return (
+    <div className="pay">
+      {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
         </Elements>
       )}
-  </div>;
+    </div>
+  );
 };
 
 export default Pay;
